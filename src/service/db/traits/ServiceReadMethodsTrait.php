@@ -79,17 +79,5 @@ trait ServiceReadMethodsTrait
 
         return $this->getStorage()->allByCondition($condition);
     }
-
-    /**
-     * Возвращает данные по ReadCondition
-     *
-     * @param ReadCondition $condition
-     * @return array
-     */
-    public function allByReadCondition(ReadCondition $condition)
-    {
-
-        return $this->getStorage()->allByCondition($condition);
-    }
 }
 
