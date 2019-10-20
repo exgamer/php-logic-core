@@ -58,7 +58,9 @@ trait ServiceModifyMethodsTrait
     /**
      * @param $data
      */
-    protected function afterInsertExternal(&$data){}
+    protected function afterInsertExternal(&$data)
+    {
+    }
 
     /**
      * @param int $id

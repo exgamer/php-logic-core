@@ -3,6 +3,7 @@ namespace concepture\php\logic\core\db;
 
 use concepture\php\data\core\db\DataProvider as Base;
 use concepture\php\data\core\db\Storage;
+use concepture\php\logic\core\service\db\Service;
 
 /**
  * Class DataProvider
@@ -14,17 +15,17 @@ class DataProvider extends Base
     protected $service;
 
     /**
-     * @return mixed
+     * @return Service
      */
-    public function getService()
+    public function getService() : Service
     {
         return $this->service;
     }
 
     /**
-     * @param mixed $service
+     * @param Service $service
      */
-    public function setService($service)
+    public function setService(Service $service)
     {
         $this->service = $service;
     }

@@ -38,7 +38,7 @@ trait ServiceReadMethodsTrait
      * @param array $condition
      * @return array
      */
-    public function oneByCondition(array $condition)
+    public function oneByCondition($condition) : array
     {
 
         return $this->getStorage()->oneByCondition($condition);
@@ -74,7 +74,7 @@ trait ServiceReadMethodsTrait
      * @param array $condition
      * @return array
      */
-    public function allByCondition(array $condition)
+    public function allByCondition($condition) :array
     {
 
         return $this->getStorage()->allByCondition($condition);
