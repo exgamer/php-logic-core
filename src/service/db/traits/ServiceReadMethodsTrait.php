@@ -1,8 +1,6 @@
 <?php
 namespace concepture\php\logic\core\service\db\traits;
 
-use concepture\php\data\core\db\ReadCondition;
-
 /**
  * Trait ServiceReadMethodsTrait
  * @package concepture\php\logic\core\service\traits
