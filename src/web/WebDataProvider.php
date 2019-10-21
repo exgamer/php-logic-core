@@ -3,7 +3,6 @@ namespace concepture\php\logic\core\web;
 
 use concepture\php\core\helper\ArrayHelper;
 use concepture\php\logic\core\db\DataProvider;
-use concepture\php\logic\core\web\pager\Pager;
 
 /**
  * Class WebDataProvider
