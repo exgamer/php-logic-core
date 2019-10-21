@@ -17,10 +17,10 @@ trait ServiceReadMethodsTrait
      *    'description' => 'some',
      * ]
      *
-     * @param array $condition
+     * @param  $condition
      * @return array
      */
-    public function oneById(int $id, array $condition = null)
+    public function oneById(int $id, $condition = null) : array
     {
 
         return $this->getStorage()->oneById($id, $condition);
@@ -33,7 +33,7 @@ trait ServiceReadMethodsTrait
      *    'description' => 'some',
      * ]
      *
-     * @param array $condition
+     * @param $condition
      * @return array
      */
     public function oneByCondition($condition) : array
@@ -51,11 +51,11 @@ trait ServiceReadMethodsTrait
      *    'description' => 'some',
      * ]
      *
-     * @param array $condition
+     * @param $condition
 
      * @return array
      */
-    public function allByIds(array $ids, array $condition = null)
+    public function allByIds(array $ids, $condition = null)
     {
 
         return $this->getStorage()->allByIds($ids, $condition);
@@ -69,7 +69,7 @@ trait ServiceReadMethodsTrait
      * ]
      *
      *
-     * @param array $condition
+     * @param $condition
      * @return array
      */
     public function allByCondition($condition) :array
