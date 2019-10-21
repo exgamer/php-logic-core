@@ -258,5 +258,31 @@ trait ServiceModifyMethodsTrait
 
         return false;
     }
+
+    /**
+     * Возвращает копию даннных
+     *
+     * @param array $data
+     * @param array $newData - данные для обновления
+     * @param array $excludeKeys - данные которые надо исключить
+     * @return array
+     */
+    public function getClone(array $data, array $newData = [], array $excludeKeys = [])
+    {
+        foreach ($excludeKeys as $key){
+            if (! isset($data[$key])){
+                continue;
+            }
+            unset($data[$key]);
+        }
+        foreach ($newData as $key => $value){
+            if (! isset($data[$key])){
+                continue;
+            }
+            $data[$key] = $value;
+        }
+
+        return $data;
+    }
 }
 
