@@ -235,5 +235,21 @@ trait ServiceModifyMethodsTrait
 
         return $changedData;
     }
+
+    /**
+     * Проверка изменились ли данные
+     * @param $key
+     * @param $changedData
+     * @return bool
+     */
+    protected function isDataChanged($key, $changedData)
+    {
+        if (isset($changedData[$key])){
+
+            return true;
+        }
+
+        return false;
+    }
 }
 
