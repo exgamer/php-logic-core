@@ -1,6 +1,7 @@
 <?php
 namespace concepture\php\logic\core\service\db;
 
+use concepture\php\data\core\data\StorageInterface;
 use concepture\php\data\core\db\Storage;
 use concepture\php\logic\core\service\ServiceInterface as Base;
 
@@ -11,5 +12,5 @@ use concepture\php\logic\core\service\ServiceInterface as Base;
  */
 interface ServiceInterface extends Base
 {
-    public function getStorage(): Storage;
+    public function getStorage(): StorageInterface;
 }

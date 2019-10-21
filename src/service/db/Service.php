@@ -1,6 +1,7 @@
 <?php
 namespace concepture\php\logic\core\service\db;
 
+use concepture\php\data\core\data\StorageInterface;
 use concepture\php\data\core\db\DataModifyInterface;
 use concepture\php\data\core\db\DataReadInterface;
 use concepture\php\data\core\db\Storage;
@@ -49,9 +50,9 @@ abstract class Service extends Base implements ServiceInterface, DataModifyInter
      * @return Storage
      * @throws ReflectionException
      */
-    public function getStorage() : Storage
+    public function getStorage() : StorageInterface
     {
-        if ($this->_storage instanceof Storage){
+        if ($this->_storage instanceof StorageInterface){
             return $this->_storage;
         }
         $className = $this->getStorageClass();
