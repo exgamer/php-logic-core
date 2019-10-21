@@ -14,7 +14,7 @@ trait ServiceModifyMethodsTrait
      * @param $data
      * @return array
      */
-    public function insert($data)
+    public function insert($data) : int
     {
         $data = $this->validateInsertData($data);
         if ($data instanceof DataValidationErrors) {
@@ -148,7 +148,7 @@ trait ServiceModifyMethodsTrait
      *
      * @param int $id
      */
-    public function delete(int $id)
+    public function delete(int $id) : bool 
     {
         $this->preDelete($id);
         $this->preDeleteExternal($id);
