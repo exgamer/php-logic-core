@@ -156,10 +156,10 @@ trait ServiceModifyMethodsTrait
     }
 
     /**
-     * @param array $condition
+     * @param $condition
      * @return bool
      */
-    public function delete(array $condition) : bool
+    public function delete($condition) : bool
     {
         return $this->getStorage()->delete($condition);
     }
