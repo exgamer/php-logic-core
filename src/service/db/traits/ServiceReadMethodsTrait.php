@@ -55,7 +55,7 @@ trait ServiceReadMethodsTrait
 
      * @return array
      */
-    public function allByIds(array $ids, $condition = null) : array 
+    public function allByIds(array $ids, $condition = null) : array
     {
 
         return $this->getStorage()->allByIds($ids, $condition);

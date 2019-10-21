@@ -14,7 +14,7 @@ trait ServiceModifyMethodsTrait
      * @param $data
      * @return array
      */
-    public function insert($data) : int
+    public function insert( array $data) : int
     {
         $data = $this->validateInsertData($data);
         if ($data instanceof DataValidationErrors) {
@@ -34,7 +34,7 @@ trait ServiceModifyMethodsTrait
      * @param $data
      * @return array
      */
-    protected function validateInsertData($data)
+    protected function validateInsertData(array $data)
     {
 
         return $this->validateData($data);
@@ -43,22 +43,22 @@ trait ServiceModifyMethodsTrait
     /**
      * @param $data
      */
-    protected function beforeInsert(&$data){}
+    protected function beforeInsert(array &$data){}
 
     /**
      * @param $data
      */
-    protected function afterInsert(&$data){}
+    protected function afterInsert(array &$data){}
 
     /**
      * @param $data
      */
-    protected function beforeInsertExternal(&$data){}
+    protected function beforeInsertExternal(array &$data){}
 
     /**
      * @param $data
      */
-    protected function afterInsertExternal(&$data)
+    protected function afterInsertExternal(array &$data)
     {
     }
 
@@ -67,7 +67,7 @@ trait ServiceModifyMethodsTrait
      * @param $data
      * @return array
      */
-    public function updateById(int $id, $data)
+    public function updateById(int $id, array $data)
     {
         $oldData = $this->getOldData(['id' => $id]);
         $changedData = $this->getChangedData($data, $oldData);
@@ -97,7 +97,7 @@ trait ServiceModifyMethodsTrait
      * @param $data
      * @return array
      */
-    protected function validateUpdateData($data)
+    protected function validateUpdateData(array $data)
     {
 
         return $this->validateData($data);
@@ -145,9 +145,8 @@ trait ServiceModifyMethodsTrait
 
     /**
      * @param int $id
-     * @param array $condition
      */
-    public function deleteById(int $id, array $condition)
+    public function deleteById(int $id)
     {
         $this->preDelete($id);
         $this->preDeleteExternal($id);
