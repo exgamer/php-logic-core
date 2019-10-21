@@ -144,17 +144,25 @@ trait ServiceModifyMethodsTrait
     public function postUpdateExternal(int $id, array  &$data,  array $oldData = [], array $changedData = []){}
 
     /**
-     * Удаление
-     *
      * @param int $id
+     * @param array $condition
      */
-    public function delete(int $id) : bool 
+    public function deleteById(int $id, array $condition)
     {
         $this->preDelete($id);
         $this->preDeleteExternal($id);
         $this->getStorage()->deleteById($id);
         $this->postDelete($id);
         $this->postDeleteExternal($id);
+    }
+
+    /**
+     * @param array $condition
+     * @return bool
+     */
+    public function delete(array $condition) : bool
+    {
+        return $this->getStorage()->delete($condition);
     }
 
     /**
