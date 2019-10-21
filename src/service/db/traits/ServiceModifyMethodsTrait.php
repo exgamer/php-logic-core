@@ -14,18 +14,18 @@ trait ServiceModifyMethodsTrait
      * @param $data
      * @return array
      */
-    public function insert( array $data) : int
+    public function persist( array $data) : int
     {
         $data = $this->validateInsertData($data);
         if ($data instanceof DataValidationErrors) {
 
             return $data;
         }
-        $this->beforeInsert($data);
-        $this->beforeInsertExternal($data);
+        $this->prePersist($data);
+        $this->prePersistExternal($data);
         $id = $this->getStorage()->insert($data);
-        $this->afterInsert($data);
-        $this->afterInsertExternal($data);
+        $this->postPersist($data);
+        $this->postPersistExternal($data);
 
         return $id;
     }
@@ -43,22 +43,22 @@ trait ServiceModifyMethodsTrait
     /**
      * @param $data
      */
-    protected function beforeInsert(array &$data){}
+    protected function prePersist(array &$data){}
 
     /**
      * @param $data
      */
-    protected function afterInsert(array &$data){}
+    protected function postPersist(array &$data){}
 
     /**
      * @param $data
      */
-    protected function beforeInsertExternal(array &$data){}
+    protected function prePersistExternal(array &$data){}
 
     /**
      * @param $data
      */
-    protected function afterInsertExternal(array &$data)
+    protected function postPersistExternal(array &$data)
     {
     }
 
@@ -146,20 +146,20 @@ trait ServiceModifyMethodsTrait
     /**
      * @param int $id
      */
-    public function deleteById(int $id)
+    public function removeById(int $id)
     {
-        $this->preDelete($id);
-        $this->preDeleteExternal($id);
-        $this->getStorage()->deleteById($id);
-        $this->postDelete($id);
-        $this->postDeleteExternal($id);
+        $this->preRemove($id);
+        $this->preRemoveExternal($id);
+        $this->getStorage()->removeById($id);
+        $this->postRemove($id);
+        $this->postRemoveExternal($id);
     }
 
     /**
      * @param $condition
      * @return bool
      */
-    public function delete($condition) : bool
+    public function remove($condition) : bool
     {
         return $this->getStorage()->delete($condition);
     }
@@ -169,28 +169,28 @@ trait ServiceModifyMethodsTrait
      *
      * @param int $id
      */
-    public function preDelete(int $id){}
+    public function preRemove(int $id){}
 
     /**
      * Метод для дополнительной обработки текущей сущности после удаления
      *
      * @param int $id
      */
-    public function postDelete(int $id){}
+    public function postRemove(int $id){}
 
     /**
      * Метод для дополнительной обработки связанных сущностей перед удалением
      *
      * @param int $id
      */
-    public function preDeleteExternal(int $id){}
+    public function preRemoveExternal(int $id){}
 
     /**
      * Метод для дополнительной обработки связанных сущностей после удаления
      *
      * @param int $id
      */
-    public function postDeleteExternal(int $id){}
+    public function postRemoveExternal(int $id){}
 
 
     public function validateData(array $data)
