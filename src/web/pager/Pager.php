@@ -2,8 +2,14 @@
 namespace concepture\php\logic\core\web\pager;
 
 use concepture\php\core\base\Component;
+use concepture\php\data\core\provider\DataProviderInterface;
 
 /**
+ *
+ * $pager = new Pager([
+ *     'dataProvider' => $dataProvider,
+ *     'shownPagesCount' => 10
+ * ]);
  * Class Pager
  * @package concepture\php\logic\core\web\pager
  * @author Olzhas Kulzhambekov <exgamer@live.ru>
@@ -14,6 +20,19 @@ class Pager extends Component
     private $page = 1;
     private $pageSize = 10;
     private $shownPagesCount = 10;
+    /**
+     * @var DataProviderInterface
+     */
+    protected $dataProvider;
+
+    public function init()
+    {
+        if ($this->dataProvider instanceof DataProviderInterface){
+            $this->setTotalCount($this->getDataProvider()->getTotalCount());
+            $this->setPage($this->getDataProvider()->getPage());
+            $this->setPageSize($this->getDataProvider()->getPageSize());
+        }
+    }
 
     /**
      * @return int
@@ -77,6 +96,22 @@ class Pager extends Component
     public function setShownPagesCount(int $shownPagesCount)
     {
         $this->shownPagesCount = $shownPagesCount;
+    }
+
+    /**
+     * @return DataProviderInterface
+     */
+    public function getDataProvider(): DataProviderInterface
+    {
+        return $this->dataProvider;
+    }
+
+    /**
+     * @param DataProviderInterface $dataProvider
+     */
+    public function setDataProvider(DataProviderInterface $dataProvider)
+    {
+        $this->dataProvider = $dataProvider;
     }
 
     /**

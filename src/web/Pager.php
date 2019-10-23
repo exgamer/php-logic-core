@@ -4,6 +4,19 @@ namespace concepture\php\logic\core\web;
 use concepture\php\logic\core\web\pager\Pager as Base;
 
 /**
+ *
+ * $pager = new Pager([
+ *     'dataProvider' => $dataProvider,
+ *     'shownPagesCount' => 10,
+ *     'route' => $request->get("_route"),
+ *       'urlGenCallback' => function($route, $queryParams){
+ *
+ *           return $this->generateUrl($route, $queryParams);
+ *       }
+ * ]);
+ *
+ *
+ *
  * Class Pager
  * @package Legal\SymfonyCore\Pager
  * @author citizenzet <exgamer@live.ru>
@@ -21,6 +34,14 @@ class Pager extends Base
      *       }
      */
     protected $urlGenCallback;
+
+    public function init()
+    {
+        parent::init();
+        if ($this->dataProvider instanceof DataProviderInterface){
+            $this->setQueryParams($this->getDataProvider()->getQueryParams());
+        }
+    }
 
     /**
      * @return string
