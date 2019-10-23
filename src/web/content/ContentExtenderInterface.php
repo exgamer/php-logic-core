@@ -9,5 +9,4 @@ namespace concepture\php\logic\core\web\content;
 interface ContentExtenderInterface
 {
     public function getResult() : string;
-    public static function placeholders() : array;
 }

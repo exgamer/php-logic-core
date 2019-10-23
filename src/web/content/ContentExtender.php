@@ -131,7 +131,7 @@ class ContentExtender extends Component implements ContentExtenderInterface
      *
      * @return array
      */
-    public static function placeholders() : array
+    protected static function placeholders() : array
     {
         return [];
     }
