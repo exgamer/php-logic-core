@@ -1,7 +1,7 @@
 <?php
 namespace concepture\php\logic\core\web\content;
 
-use concepture\php\core\base\Component;
+use concepture\php\data\core\transformer\DataTransformer;
 use concepture\php\core\helper\StringHelper;
 use concepture\php\logic\core\service\Service;
 use ReflectionException;
@@ -16,18 +16,8 @@ use ReflectionException;
  * @package concepture\php\logic\core\web\content
  * @author Olzhas Kulzhambekov <exgamer@live.ru>
  */
-class ContentExtender extends Component implements ContentExtenderInterface
+abstract class ContentExtender extends DataTransformer
 {
-    /**
-     * @var object
-     */
-    protected $owner;
-
-    /**
-     * @var string
-     */
-    protected $content;
-
     /**
      * @var Service
      */
@@ -71,38 +61,6 @@ class ContentExtender extends Component implements ContentExtenderInterface
     }
 
     /**
-     * @return object
-     */
-    public function getOwner() : object
-    {
-        return $this->owner;
-    }
-
-    /**
-     * @param object $owner
-     */
-    public function setOwner(object $owner)
-    {
-        $this->owner = $owner;
-    }
-
-    /**
-     * @return string
-     */
-    public function getContent(): string
-    {
-        return $this->content;
-    }
-
-    /**
-     * @param string $content
-     */
-    public function setContent(string $content)
-    {
-        $this->content = $content;
-    }
-
-    /**
      * Возвращает результат
      *
      *
@@ -111,7 +69,7 @@ class ContentExtender extends Component implements ContentExtenderInterface
      */
     public function getResult() : string
     {
-        $content = $this->getContent();
+        $content = $this->getData();
         $blockPlaceholders = static::placeholders();
         foreach ($blockPlaceholders as $placeholder){
             if ( strpos($content, $placeholder) === false){
