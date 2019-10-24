@@ -12,7 +12,7 @@ trait ServiceModifyMethodsTrait
 {
     /**
      * @param $data
-     * @return array
+     * @return int
      */
     public function persist( array $data) : int
     {
