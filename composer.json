@@ -10,8 +10,8 @@
     ],
     "require": {
         "php": ">=7.0.0",
-        "concepture/php-core": "dev-master",
-        "concepture/php-data-core": "dev-master"
+        "concepture/php-core": "dev-max",
+        "concepture/php-data-core": "dev-max"
     },
     "autoload": {
         "psr-4": {
@@ -20,7 +20,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0.0-dev"
+            "dev-max": "1.0.0-dev"
         }
     }
 }
